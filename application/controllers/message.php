@@ -7,8 +7,7 @@ class Message extends REST_Controller {
 	
 	/*** 
 		Get Conversations for  user id 
-		example http://api2.pricenista.com/message/getconversations/user_id/1/
-
+	
 	****/
 	public function getconversations_get(){
 
@@ -32,8 +31,7 @@ class Message extends REST_Controller {
 
 	/*** 
 		send message to a friend using GET method
-		example api2.pricenista.com/message/sendmessage/sender_id/1/receiver_id/2/message/test/
-
+		
 	****/
 	public function sendmessage_get(){
 
@@ -41,7 +39,7 @@ class Message extends REST_Controller {
 		$message['receiver_id']  = $this->get('receiver_id');
 		$message['message']      = $this->get('message');
 		$message['chat_id']      = $message['sender_id'] . '_' . $message['receiver_id'];
-		//$message['created']      = $this->datahandler->getCurrentDateTime();
+		
 
 		if(!empty($message['sender_id']) && !empty($message['receiver_id']) && !empty($message['message']))
 		{
@@ -63,7 +61,7 @@ class Message extends REST_Controller {
 
 	/*** 
 		send message to a friend using POST method
-		example api2.pricenista.com/message/sendmessagepost/
+		
 
 	****/
 	public function sendmessagepost_post(){
@@ -72,7 +70,7 @@ class Message extends REST_Controller {
 		$message['receiver_id']  = $this->post('receiver_id');
 		$message['message']      = $this->post('message');
 		$message['chat_id']      = $message['sender_id'] . '_' . $message['receiver_id'];
-		//$message['created']      = $this->datahandler->getCurrentDateTime();
+	
 
 		if(!empty($message['sender_id']) && !empty($message['receiver_id']) && !empty($message['message']))
 		{
