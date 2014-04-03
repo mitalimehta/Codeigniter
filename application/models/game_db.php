@@ -26,30 +26,23 @@ class Game_db extends CI_Model{
 
 	function storepoints($user_id,$category_id,$points){
 
-		// check ranking table for existing data
-
-		//$this->addCorrectAnswer($user_id);
-		//exit;
-
+	
 		$select = $this->db->query("select points from ranking where category_id = ".$category_id." and user_id = ".$user_id);
 		
 			
 		$ranking = $select->result();
 
-
-		//echo "<pre>";print_r($ranking);
 		//if data exists then update current point with currentpoints+10
 		if( count($ranking) > 0 ){
 
-			//ECHO $ranking[0]->points;EXIT;
+			
 			$updatearray = array('points' => $ranking[0]->points+$points);
 
 			$this->db->where('category_id', $category_id);
 			$this->db->where('user_id', $user_id);
 			$this->db->update('ranking', $updatearray); 
 
-			//echo "<pre>";print_r($updatearray);exit;
-			//$update = 
+		
 		}
 
 		//else insert points
