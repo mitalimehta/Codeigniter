@@ -14,10 +14,6 @@ class Message_db extends CI_Model{
 			
 			$this->db->order_by("message.created", "desc"); 
 
-			//$this->db->distinct('message.sender_id');	
-			//$this->db->group_by('message.sender_id');
-
-
 			$this->db->limit($this->_limit);
 			
 			$query = $this->db->get();
@@ -28,8 +24,6 @@ class Message_db extends CI_Model{
 
 	function sendmessage($message){
 
-		 //$this->db->set('created',now());	
-		 //$message['created'] = now();
  		 return $this->db->insert('message', $message); 
 		 
 	}
