@@ -7,26 +7,15 @@ class Game extends REST_Controller {
 	
 	/***** 
 		send message to a friend using POST method
-		example http://api2.pricenista.com/game/getallcategories/
-		http://api2.pricenista.com/game/getallcategories/category_id/4/
+		
 	****/
 
 	public function getallcategories_get(){
 
-		//echo $this->config->item('sitename');
-
+	
 		$categories['categories'] = $this->datahandler->getAllCategories($this->get('category_id'));
 		
-		/*if($this->get('category_id'))
-		{
-			$categories_caption = $this->datahandler->getCategoryName($this->get('category_id'));
-
-			$categories['categories_caption'] = $categories_caption[0]->name;
-		}
-		else{
-			$categories['categories_caption'] = 'Category';
-		}*/
-
+	
 		foreach($categories['categories'] as $count=>$category){
 			
 			$subCategory = 	$this->datahandler->getAllCategories($category->category_id);
@@ -42,7 +31,7 @@ class Game extends REST_Controller {
 			
 		}
 
-        $this->pricenistalog->write_log(2,$categories);
+       
 
 		$this->response($categories, 200);
 	}
